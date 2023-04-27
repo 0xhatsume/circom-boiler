@@ -1,7 +1,10 @@
 version: '3'
 services:
   circom:
-    image: naps62/circom:latest
+    build:
+      dockerfile: ./Docker/Dockerfile
+    #image: naps62/circom:0.2.0
+    image: cairo-circom:latest
     container_name: circom-dev
     # build:
     #   context: .
@@ -9,6 +12,7 @@ services:
       - .env
     ports:
       - 8888:8888
+      - 8545:8545
     volumes:
       - ./srv:/srv
     command: ["sh"]
